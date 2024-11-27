@@ -37,7 +37,6 @@ let connections = [
   ['mouth', 'drone']
 ];
 
-// Sample texts for each element
 let elementTexts = {
   mouth: "My mouth is open and noise is coming out of it: I am a creature: and the drill against my tooth is my voice. Before this, both halves of the soundmaking were mine: fleshy parts of myself slap-clacking together.",
   tooth: "The cavity is a collective object. The cavity is bacterial relations. Its nest is its food. Its burrow, the bite out of my tooth, is a consequence of the way it eats.",
@@ -74,51 +73,58 @@ function setup() {
               'nurse', 'cavity', 'odor', 'enamel', 'home', 'hands', 'plaque', 'doctor', 'suction'];
               
   for (let i = 0; i < vars.length; i++) {
-    let element = createDiv(vars[i]);
-    let padding = 100;
-    let randomX = random(padding, windowWidth - padding);
-    let randomY = random(padding, windowHeight - padding);
+      let element = createDiv(vars[i]);
+      
+      let padding = 100;
+      let randomX = random(padding, windowWidth - padding);
+      let randomY = random(padding, windowHeight - padding);
+      
+      element.position(randomX, randomY);
+      element.size(60, 20);
+      // element.style('font-size', '11px')
+      element.style('background', 'black');
+      element.style('padding-left', '20px');
+      element.style('cursor', 'move');
+      element.style('user-select', 'none');
+      element.draggable();
     
-    element.position(randomX, randomY);
-    element.size(80, 20);
-    element.style('background', 'orchid');
-    element.style('padding', '5px');
-    element.style('cursor', 'move');
-    element.style('user-select', 'none');
-    element.draggable();
-    
-    // Add click handler
-    element.mouseClicked(function() {
-      createInfoBox(vars[i], element);
-    });
-    
-    elements[vars[i]] = element;
-  }
+      element.mouseClicked(function() {
+        createInfoBox(vars[i], element);
+        element.style('background', 'repeating-radial-gradient(circle at 51% 0%, #dd15e0 0%, #91ba45 93%, #090979 100%');
+        element.style('box-shadow', 'inset 29px 26px 44px -42px #2d54f0');
+        element.style('clip-path', 'polygon(100% 43%, 91% 79%, 93% 97%, 0% 100%, 17% 67%, 0% 9%, 23% 0%, 44% 6%, 78% 0%, 100% 14%, 92% 21%)');
+      });
+      
+      element.elt.addEventListener('drag', function(event) {
+        let infoBox = infoBoxes[vars[i]];
+        if (infoBox) {
+          let newPos = element.position();
+          infoBox.position(newPos.x + element.width() + 25, newPos.y);
+        }
+      });
+      
+      elements[vars[i]] = element;
+    }
 }
 
 function createInfoBox(elementName, sourceElement) {
-  // Remove existing info box for this element if it exists
   if (infoBoxes[elementName]) {
     infoBoxes[elementName].remove();
     delete infoBoxes[elementName];
-    return;
   }
   
-  // Create info box
   let infoBox = createDiv();
   let pos = sourceElement.position();
   
-  // Position info box to the right of the element
-  infoBox.position(pos.x + sourceElement.width + 10, pos.y);
+  infoBox.position(pos.x + sourceElement.width + 25, pos.y);
   
-  // Style the info box
   infoBox.style('background', 'white');
   infoBox.style('border', '1px solid black');
   infoBox.style('padding', '10px');
   infoBox.style('width', '200px');
+  // infoBox.style('font-size', '11px');
   infoBox.style('box-shadow', '2px 2px 5px rgba(0,0,0,0.2)');
-  
-  // Add close button
+
   let closeBtn = createButton('×');
   closeBtn.parent(infoBox);
   closeBtn.style('float', 'right');
@@ -131,21 +137,18 @@ function createInfoBox(elementName, sourceElement) {
     delete infoBoxes[elementName];
   });
   
-  // Add content
   let content = elementTexts[elementName];
   let contentDiv = createDiv(content);
   contentDiv.parent(infoBox);
   contentDiv.style('margin-top', '20px');
   
-  // Store reference to info box
   infoBoxes[elementName] = infoBox;
 }
 
 function draw() {
   clear();
   
-  stroke(100);
-  strokeWeight(2);
+  strokeWeight(1);
   
   for (let connection of connections) {
     let elem1 = elements[connection[0]];
@@ -155,11 +158,7 @@ function draw() {
     let y1 = elem1.position().y + elem1.height / 2;
     let x2 = elem2.position().x + elem2.width / 2;
     let y2 = elem2.position().y + elem2.height / 2;
-    
+
     line(x1, y1, x2, y2);
   }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
