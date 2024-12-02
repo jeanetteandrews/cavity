@@ -4,17 +4,32 @@ html, body {
     margin: 0;
     padding: 0;
     font-size: 0.9em;
-    font-family: "Chakra Petch", sans-serif;
-    font-weight: 400;
+    font-family: "DotGothic16", sans-serif;
     line-height: 1.7;
     letter-spacing: 1px;
     overflow: hidden;
+    background-image: url("background.jpg");
+}
 
-    /* Disable highlighting */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+p {
+    position: absolute;
+    top: 70%;
+    width: 100%; 
+    text-align: center;
+    margin: 0; 
+    z-index: 999; 
+    font-size: 2em;
+    color: white;
+    text-stroke: 1.9px black; /* For Webkit browsers */
+    -webkit-text-stroke: 1.2px black; /* For Safari and Chrome */
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+p:nth-child(2) {
+    top: 76%;
+}
+
+p:nth-child(3) {
+    top: 82%;
 }
