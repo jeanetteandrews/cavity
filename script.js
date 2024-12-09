@@ -123,7 +123,7 @@ function sketch1(p) {
 // Run first p5 instance
 new p5(sketch1);
 
-let toupee, glue, teacup, water, spit, drill, mouth, tongue, tooth, glass, drone, rubber, mirror, food, me, dentist, nurse, cavity, odor, enamel, home, hands, plaque, doctor, suction;
+let toupee, glue, teacup, water, spit, drill, mouth, tongue, tooth, resin, drone, rubber, mirror, food, me, dentist, nurse, cavity, odor, enamel, home, hands, plaque, doctor, suction;
 let elements = {};
 let infoBoxes = {}; 
 
@@ -142,8 +142,8 @@ let connections = [
   ['mouth', 'spit'],
   ['teacup', 'water'],
   ['cavity', 'food'],
-  ['dentist', 'glass'],
-  ['glass', 'cavity'],
+  ['dentist', 'resin'],
+  ['resin', 'cavity'],
   ['rubber', 'mouth'],
   ['hands', 'mirror'],
   ['mirror', 'mouth'],
@@ -178,7 +178,7 @@ let elementTexts = {
   suction: "What a teacup is, though, is something to be sipped out of. I swallow out of myself: the suction hose slurps with gusto. It takes into and through itself so much diluted spit, on and on without a breath. It’s not particular — it’s here to gobble-gulp and not to filter.",
   doctor: "This is a chimeric relationship. As the doctor pushes the drill into me, she remains flesh. We wonder who’s in charge: here is the doctor, paid to perform an excision.",
   food: "It’s my own food, my leftovers, that they make a new meal out of. The consequence is acid. Eventually they would reach the soft core of their chosen tooth, which is called the pulp cavity. At this point I would be touching myself, cavity to cavity.",
-  glass: "The dentist will affix resin and glass, or just resin, or metal, to the groove they will carve into the enamel. Decay can form underneath the filling, too. The grooves of the back teeth collect food. Tooth location is a risk factor.",
+  resin: "The dentist will affix resin and glass, or just resin, or metal, to the groove they will carve into the enamel. Decay can form underneath the filling, too. The grooves of the back teeth collect food. Tooth location is a risk factor.",
   rubber: "The mechanism that opens my mouth becomes rubber, not muscle.",
   mirror: "The drill and mirror and suction hose have to shudder and resettle.",
   me: "Here I am. We’re all here because of the bacteria, collectively called decay, that I left on the grooves of my teeth for too long, and they took this opportunity to live and eat and keep living, so I asked for an appointment.",
@@ -190,20 +190,49 @@ let elementTexts = {
   drill: "The doctor and the nurse are drilling, drilling with such direction and precision, because the cavity grows if left to its own devices."
 };
   
+let description1 = "I went to the dentist and got grossed out & got gross stuff taken out of me."
+let description2 = "I went to the dentist and thought: the thing that’s gross about a cavity is that it eats you, and that it smells. Cavities make our hard surfaces vulnerable. Cavities remind us that our mouths are always full — we imagine those bacteria as invaders, but they’re always there. It’s disgusting to mix bodies like this, smush them together; it’s disgusting to notice that that’s already happening. The fact of it is disgusting; the noticing is disgusting; I become disgusting in noticing it."
+let description3 = "One heart of disgust is the fear that we are not ourselves, or that we are not contained in the ways we think we are. At the dentist we arrive at this heart."
+let description4 = "essay by Ahana Ganguly"
+let description5 = "code by Jeanette Andrews"
+
   // Function for second canvas
   function sketch2(p) {
     p.setup = function () {
         p.createCanvas(p.windowWidth, p.windowHeight, canvas2);
-  
+        let description = p.createDiv();
+        description.position(30, 50);
+        description.style('background', 'white');
+        description.style('border', '1px solid black');
+        description.style('padding', '20px');
+        description.style('width', '300px');
+        // infoBox.style('font-size', '11px');
+        description.style('box-shadow', '2px 2px 5px rgba(0,0,0,0.2)');
+        let p1 = p.createDiv(description1);
+        let p2 = p.createDiv(description2);
+        let p3 = p.createDiv(description3);
+        let p4 = p.createDiv(description4);
+        let p5 = p.createDiv(description5);
+        p1.parent(description);
+        p2.parent(description);
+        p3.parent(description);
+        p4.parent(description);
+        p5.parent(description);
+        p2.style('padding-top', '20px');
+        p3.style('padding-top', '20px');
+        p4.style('padding-top', '40px');
+        p4.style('font-size', '0.8em')
+        p5.style('font-size', '0.8em')
+
         let vars = ['toupee', 'glue', 'teacup', 'water', 'spit', 'drill', 'mouth', 'tongue', 
-                    'tooth', 'glass', 'drone', 'rubber', 'mirror', 'food', 'me', 'dentist', 
+                    'tooth', 'resin', 'drone', 'rubber', 'mirror', 'food', 'me', 'dentist', 
                     'nurse', 'cavity', 'odor', 'enamel', 'home', 'hands', 'plaque', 'doctor', 'suction'];
                     
         for (let i = 0; i < vars.length; i++) {
             let element = p.createDiv(vars[i]);
             
             let padding = 100;
-            let randomX = p.random(padding, p.windowWidth - padding);
+            let randomX = p.random(padding + 280, p.windowWidth - padding);
             let randomY = p.random(padding, p.windowHeight - padding);
             
             element.position(randomX, randomY);
