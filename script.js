@@ -4,12 +4,12 @@ let svgGroups = [];
 let currentGroups = []; 
 let targetGroups = [];
 let isHovering = false;
-const letters = "c^vIty".split("");
+const letters = "C^vI tY".split("");
 let noiseOffset = 0;
 
 const svgPath = "M18.5 11C18.5 3 13.5858 7.35786 13 1.5C17.491 4.81946 20.9999 8 25 10C29 12 39.5 5.5 39.5 5.5C39.5 5.5 30.8066 13.5 33.8066 13C36.8066 12.5 40.8066 21.5 40.8066 21.5C39 18.0038 28.1863 14.791 27 17C23.6918 21.783 32.8362 25.4225 35.3066 30L33.8066 41.5C33.118 27.5 25.3665 24.3834 19.5 22.5C12.4184 27.4494 10.5 30 8.30656 41.5C3.49999 31 15.2645 27.2176 15.5 19.5L0.306641 22.5C0.306641 22.5 18.5 19 18.5 11Z";
 
-fontlink = 'https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Bold.otf';
+fontlink = 'Favorit-Light.otf';
 
 function parseSVGPath(pathData, numPoints = 100) {
   let tempDiv = document.createElement('div');
@@ -200,29 +200,29 @@ let description5 = "code by Jeanette Andrews"
   function sketch2(p) {
     p.setup = function () {
         p.createCanvas(p.windowWidth, p.windowHeight, canvas2);
-        let description = p.createDiv();
-        description.position(30, 50);
-        description.style('background', 'white');
-        description.style('border', '1px solid black');
-        description.style('padding', '20px');
-        description.style('width', '300px');
+        // let description = p.createDiv();
+        // description.position(30, 50);
+        // description.style('background', 'white');
+        // description.style('border', '1px solid black');
+        // description.style('padding', '20px');
+        // description.style('width', '300px');
         // infoBox.style('font-size', '11px');
-        description.style('box-shadow', '2px 2px 5px rgba(0,0,0,0.2)');
-        let p1 = p.createDiv(description1);
-        let p2 = p.createDiv(description2);
-        let p3 = p.createDiv(description3);
-        let p4 = p.createDiv(description4);
-        let p5 = p.createDiv(description5);
-        p1.parent(description);
-        p2.parent(description);
-        p3.parent(description);
-        p4.parent(description);
-        p5.parent(description);
-        p2.style('padding-top', '20px');
-        p3.style('padding-top', '20px');
-        p4.style('padding-top', '40px');
-        p4.style('font-size', '0.8em')
-        p5.style('font-size', '0.8em')
+        // description.style('box-shadow', '2px 2px 5px rgba(0,0,0,0.2)');
+        // let p1 = p.createDiv(description1);
+        // let p2 = p.createDiv(description2);
+        // let p3 = p.createDiv(description3);
+        // let p4 = p.createDiv(description4);
+        // let p5 = p.createDiv(description5);
+        // p1.parent(description);
+        // p2.parent(description);
+        // p3.parent(description);
+        // p4.parent(description);
+        // p5.parent(description);
+        // p2.style('padding-top', '20px');
+        // p3.style('padding-top', '20px');
+        // p4.style('padding-top', '40px');
+        // p4.style('font-size', '0.8em')
+        // p5.style('font-size', '0.8em')
 
         let vars = ['toupee', 'glue', 'teacup', 'water', 'spit', 'drill', 'mouth', 'tongue', 
                     'tooth', 'resin', 'drone', 'rubber', 'mirror', 'food', 'me', 'dentist', 
@@ -232,7 +232,8 @@ let description5 = "code by Jeanette Andrews"
             let element = p.createDiv(vars[i]);
             
             let padding = 100;
-            let randomX = p.random(padding + 280, p.windowWidth - padding);
+            // let randomX = p.random(padding + 280, p.windowWidth - padding);
+            let randomX = p.random(padding, p.windowWidth - padding);
             let randomY = p.random(padding, p.windowHeight - padding);
             
             element.position(randomX, randomY);

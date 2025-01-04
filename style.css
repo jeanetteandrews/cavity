@@ -8,7 +8,7 @@ html, body {
     line-height: 1.7;
     letter-spacing: 1px;
     overflow: hidden;
-    background-image: url("background.jpg");
+    cursor: pointer;
 }
 
 p {
@@ -18,12 +18,9 @@ p {
     text-align: center;
     margin: 0; 
     z-index: 999; 
-    font-size: 2em;
-    color: white;
-    text-stroke: 1.9px black; /* For Webkit browsers */
-    -webkit-text-stroke: 1.2px black; /* For Safari and Chrome */
+    font-size: 1rem;
+    color: black;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 p:nth-child(2) {
