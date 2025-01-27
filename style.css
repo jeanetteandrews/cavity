@@ -8,6 +8,11 @@ html, body {
     line-height: 1.7;
     letter-spacing: 1px;
     overflow: hidden;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
 }
 
 #div1 {
