@@ -226,7 +226,7 @@ function sketch2(p) {
       element.size(textWidthValue + 37, 21);
       element.style('background', 'black');
       element.style('padding-left', '10px');
-      element.style('cursor', 'move');
+      element.style('font-size', '13px');
       element.style('-webkit-touch-callout', 'none');
       element.style('-webkit-user-select', 'none');
       element.style('-khtml-user-select', 'none');
@@ -258,6 +258,7 @@ function sketch2(p) {
         infoBox.style('-moz-user-select', 'none');
         infoBox.style('-ms-user-select', 'none');
         infoBox.style('user-select', 'none');
+        infoBox.style('font-size', '13px');
         infoBox.draggable();
 
         let closeBtn = p.createButton('×');
