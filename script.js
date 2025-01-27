@@ -11,6 +11,9 @@ const svgPath = "M18.5 11C18.5 3 13.5858 7.35786 13 1.5C17.491 4.81946 20.9999 8
 
 fontlink = 'Favorit-Light.otf';
 
+const div1 = document.getElementById("div1");
+const caption = document.getElementById("caption");
+
 function parseSVGPath(pathData, numPoints = 100) {
   let tempDiv = document.createElement('div');
   tempDiv.innerHTML = `<svg><path d="${pathData}"/></svg>`;
@@ -84,6 +87,7 @@ function sketch1(p) {
         targetGroups.push(points.map(pt => ({ x: pt.x, y: pt.y })));
       }
     });
+    caption.style.display = "block";
   };
 
   p.draw = function () {
@@ -212,17 +216,16 @@ function sketch2(p) {
       let displayName = vars[i].replace(/_/g, ' ');
       let element = p.createDiv(displayName);
 
-      let padding = 25;
-      let randomX = p.random(padding, window.innerWidth - padding * 5.7);  
-      let randomY = p.random(padding, window.innerHeight - padding);
+      let randomX = p.random(20, window.innerWidth - 176.25);  
+      let randomY = p.random(25, window.innerHeight - 25);
 
       element.position(randomX, randomY);
       let textWidthValue = p.textWidth(displayName);
 
       // Width will be based on the text length, and a fixed height of 20px
-      element.size(textWidthValue + 20, 20);
+      element.size(textWidthValue + 30, 21);
       element.style('background', 'black');
-      element.style('padding-left', '20px');
+      element.style('padding-left', '10px');
       element.style('cursor', 'move');
       element.style('-webkit-touch-callout', 'none');
       element.style('-webkit-user-select', 'none');
@@ -264,6 +267,7 @@ function sketch2(p) {
         closeBtn.style('background', 'none');
         closeBtn.style('font-size', '20px');
         closeBtn.style('cursor', 'pointer');
+        closeBtn.style('color', 'black');
         closeBtn.mousePressed(function () {
           infoBox.remove();
           delete infoBoxes[elementName];
@@ -331,7 +335,7 @@ function sketch2(p) {
   
 // Run second p5 instance
 function handleFirstClick() {
-  const div1 = document.getElementById("div1");
+  // const div1 = document.getElementById("div1");
   const infoContainer = document.getElementById("info-container");
   
   // Hide the first canvas and display the second
@@ -364,14 +368,10 @@ window.onload = function() {
   // Get the initial window width
   const initialWidth = window.innerWidth;
   const initialHeight = window.innerHeight;
-
-  // Get the container element
-  const container = document.getElementById("div1");
-  const caption = document.getElementById("caption");
-
+  
   // Set the width of the container to the initial window width
-  container.style.width = `${initialWidth}px`;
-  container.style.height = `${initialHeight}px`;
+  div1.style.width = `${initialWidth}px`;
+  div1.style.height = `${initialHeight}px`;
 
   caption.style.width = `${initialWidth}px`;
   caption.style.top = `${initialHeight*.7}px`;
