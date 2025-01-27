@@ -4,29 +4,75 @@ html, body {
     margin: 0;
     padding: 0;
     font-size: 0.9em;
-    font-family: "DotGothic16", sans-serif;
+    font-family: "DotGothic16", Helvetica, Arial, sans-serif;
     line-height: 1.7;
     letter-spacing: 1px;
     overflow: hidden;
+}
+
+#caption {
+    position: fixed;
+    text-align: center;
+    margin: 0; 
+    z-index: 4; 
+    color: black;
+    white-space: nowrap;
+}
+
+#div1 {
+    z-index: 3;
+    background-color: none;
+}
+
+#info-container {
+    display: none;
+}
+
+#info-button {
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
     cursor: pointer;
 }
 
-p {
+#info-button:hover {
+    color: green;
+}
+
+#info-content {
+    top: 46px;
+    margin: 5px;
+    padding: 22px 10px 10px 10px;
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+#info-content.show {
     position: absolute;
-    top: 70%;
-    width: 100%; 
-    text-align: center;
-    margin: 0; 
-    z-index: 999; 
-    font-size: 1rem;
-    color: black;
-    letter-spacing: 2px;
+    display: block;
 }
 
-p:nth-child(2) {
-    top: 76%;
+#info-content p {
+    width: 300px;
+    padding: 0px;
+    margin: 8px 0px 0px 0px;
 }
 
-p:nth-child(3) {
-    top: 82%;
+#close {
+    display: flex;
+    justify-content: flex-end;
+    line-height: 0;
+    margin: 0 4px 0 0;
+    font-family: 'Arial';
+    font-size: 20px;
+}
+
+#close span {
+    cursor: pointer;
 }
