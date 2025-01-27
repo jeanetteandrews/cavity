@@ -48,7 +48,7 @@ html, body {
 #info-content {
     top: 46px;
     margin: 5px;
-    padding: 22px 10px 10px 10px;
+    padding: 10px;
     display: none;
     background-color: white;
     border: 1px solid black;
@@ -64,13 +64,13 @@ html, body {
 #info-content p {
     width: 300px;
     padding: 0px;
-    margin: 8px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 #close {
-    line-height: 0;
-    margin: 0;
-    padding: 0;
+    line-height: 1;
+    margin: 0px;
+    padding: 0px;
     font-family: 'Arial';
     font-size: 20px;
     border: none;

@@ -216,14 +216,14 @@ function sketch2(p) {
       let displayName = vars[i].replace(/_/g, ' ');
       let element = p.createDiv(displayName);
 
-      let randomX = p.random(20, window.innerWidth - 176.25);  
+      let randomX = p.random(20, window.innerWidth - 181);  
       let randomY = p.random(25, window.innerHeight - 25);
 
       element.position(randomX, randomY);
       let textWidthValue = p.textWidth(displayName);
 
       // Width will be based on the text length, and a fixed height of 20px
-      element.size(textWidthValue + 30, 21);
+      element.size(textWidthValue + 35, 21);
       element.style('background', 'black');
       element.style('padding-left', '10px');
       element.style('cursor', 'move');
@@ -268,6 +268,10 @@ function sketch2(p) {
         closeBtn.style('font-size', '20px');
         closeBtn.style('cursor', 'pointer');
         closeBtn.style('color', 'black');
+        closeBtn.style('margin', '0px');
+        closeBtn.style('padding', '0px');
+        closeBtn.style('line-height', '1');
+        closeBtn.style('font-family', 'Arial');
         closeBtn.mousePressed(function () {
           infoBox.remove();
           delete infoBoxes[elementName];
