@@ -219,12 +219,18 @@ function sketch2(p) {
       element.position(randomX, randomY);
       let textWidthValue = p.textWidth(displayName);
 
-      // Set the size of the div: the width will be based on the text length, and a fixed height of 20px
+      // Width will be based on the text length, and a fixed height of 20px
       element.size(textWidthValue + 20, 20);
       element.style('background', 'black');
       element.style('padding-left', '20px');
       element.style('cursor', 'move');
+      element.style('-webkit-touch-callout', 'none');
+      element.style('-webkit-user-select', 'none');
+      element.style('-khtml-user-select', 'none');
+      element.style('-moz-user-select', 'none');  
+      element.style('-ms-user-select', 'none');
       element.style('user-select', 'none');
+      element.style('white-space', 'nowrap');
       element.draggable();
 
       function createInfoBox(elementName, sourceElement) {
