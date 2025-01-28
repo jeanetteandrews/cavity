@@ -85,3 +85,33 @@ body {
     float: right;
     color: black;
 }
+
+@media (width < 500px) {
+    #info-container {
+        font-size: 9.75px;
+    }
+
+    #info-button {
+        padding: 7.5px 15px;         
+        margin: 3.75px;              
+    }
+    
+    #info-content {
+        top: 34.5px;                
+        margin: 3.75px;              
+        padding: 7.5px;              
+        border: 1px solid black;
+        box-shadow: 1.5px 1.5px 3.75px rgba(0,0,0,0.2);  
+    }
+    
+    #info-content p {
+        width: 225px;               
+        padding: 0px;
+        margin: 15px 0px 0px 0px;    
+    }
+    
+    #close {
+        line-height: 1;
+        font-size: 15px;              
+    }
+}

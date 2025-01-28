@@ -9,7 +9,7 @@ let noiseOffset = 0;
 
 const svgPath = "M18.5 11C18.5 3 13.5858 7.35786 13 1.5C17.491 4.81946 20.9999 8 25 10C29 12 39.5 5.5 39.5 5.5C39.5 5.5 30.8066 13.5 33.8066 13C36.8066 12.5 40.8066 21.5 40.8066 21.5C39 18.0038 28.1863 14.791 27 17C23.6918 21.783 32.8362 25.4225 35.3066 30L33.8066 41.5C33.118 27.5 25.3665 24.3834 19.5 22.5C12.4184 27.4494 10.5 30 8.30656 41.5C3.49999 31 15.2645 27.2176 15.5 19.5L0.306641 22.5C0.306641 22.5 18.5 19 18.5 11Z";
 
-fontlink = 'Favorit-Light.otf';
+fontlink = 'cavity.otf';
 
 const div1 = document.getElementById("div1");
 const caption = document.getElementById("caption");
@@ -136,7 +136,6 @@ function sketch1(p) {
 // Run first p5 instance
 new p5(sketch1);
 
-let toupee, glue, teacup, my_tiny_mouth, spit, drill, my_mouth, my_original_tongue, tooth, filling, drone, rubber, the_tools, food, me, decay, nurse, cavity, odor, enamel, home, hands, plaque, doctor, suction_hose;
 let elements = {};
 let infoBoxes = {}; 
 
@@ -170,63 +169,64 @@ let connections = [
   ['hands', 'drill'],
   ['me', 'my_tiny_mouth'],
   ['me', 'spit'],
-  ['spit', 'suction_hose'],
-  ['drone', 'drill'],
-  ['my_mouth', 'drone']
+  ['spit', 'suction_hose']
 ];
 
 let elementTexts = {
   my_mouth: "My mouth is open and noise is coming out of it: I am a creature: and the drill against my tooth is my voice. Before this, both halves of the soundmaking were mine: fleshy parts of myself slap-clacking together. Now that the drill bit is continuous with my tooth, hard against hard, I speak in a long drone, pitch determined by angle.",
-  tooth: "The cavity is a collective object. The cavity is bacterial relations. Its nest is its food. Its burrow, the bite out of my tooth, is a consequence of the way it eats.",
-  enamel: "Around this movement, noisy, the doctor is trying her very best to squeeze every last bit of my cavity out of that enamel.",
-  drone: "Now that the drill bit is continuous with my tooth, hard against hard, I speak in a long drone, pitch determined by angle.",
-  cavity: "The cavity is digging into me, and it smells, too. The cavity realizes that I am uncontained. It takes something preexisting on my hard surfaces and makes them vulnerable. The inhabitants of the cavity are invaders even as we live together. We are living together, so together.",
+  rubber: "The mechanism that opens my mouth becomes rubber, not muscle.",
   my_original_tongue: "My original tongue is irrelevant now — really, it’s mostly an inconvenience: when I swallow, which I can’t help but do, it pushes and pulses, and this disrupts the tools:",
-  toupee: "I think it’s peeling a little at the edges. On his behalf and on my own I get a little embarrassed, but he doesn’t know that I see it, or the possibility of it. It’s less that it’s embarrassing to wear a toupee or be let in on the secret of someone else’s toupee, and more that there is skin getting unhidden.",
+  the_tools: "the drill and mirror and suction hose have to shudder and resettle.",
+  enamel: "Around this movement, noisy, the doctor is trying her very best to squeeze every last bit of my cavity out of that enamel.",
   nurse: "The nurse is leaning so close I can see his toupee.",
+  toupee: "I think it’s peeling a little at the edges. On his behalf and on my own I get a little embarrassed, but he doesn’t know that I see it, or the possibility of it. It’s less that it’s embarrassing to wear a toupee or be let in on the secret of someone else’s toupee, and more that there is skin getting unhidden.",
   glue: "Knowing that this upper edge of his forehead should be touching glue but this agreement is failing and getting flaky and so now it is touching air. Embarrassed on behalf of the glue.",
-  spit: "I laugh with my mouth stretched open and inadvertently gargle some spit-water. It romps upwards briefly, a small splash.",
-  teacup: "Earnestly, he tells the doctor, It’s like looking into a teacup! when he has to switch his suction hose out for a smaller one. I think to myself that teacups are not that small. ",
   my_tiny_mouth: "Around their work, noisy, the nurse can’t stop talking about how tiny my mouth is. He exclaims to me every time he puts something new in my mouth that it’s the child-sized version, the pediatric object.",
+  teacup: "Earnestly, he tells the doctor, It’s like looking into a teacup! when he has to switch his suction hose out for a smaller one. I think to myself that teacups are not that small. ",
+  spit: "I laugh with my mouth stretched open and inadvertently gargle some spit-water. It romps upwards briefly, a small splash.",
   suction_hose: "What a teacup is, though, is something to be sipped out of. I swallow out of myself: the suction hose slurps with gusto. It takes into and through itself so much diluted spit, on and on without a breath. It’s not particular — it’s here to gobble-gulp and not to filter. We are two suckers connected by a pool of water and saliva.",
   doctor: "This is a chimeric relationship. As the doctor pushes the drill into me, she remains flesh. We wonder who’s in charge: here is the doctor, paid to perform an excision.",
-  food: "It’s my own food, my leftovers, that they make a new meal out of. The consequence is acid. Eventually they would reach the soft core of their chosen tooth, which is called the pulp cavity. At this point I would be touching myself, cavity to cavity.",
-  filling: "The dentist will affix resin and glass, or just resin, or metal, to the groove they will carve into the enamel. Decay can form underneath the filling, too. The grooves of the back teeth collect food. Tooth location is a risk factor.",
-  rubber: "The mechanism that opens my mouth becomes rubber, not muscle.",
-  the_tools: "the drill and mirror and suction hose have to shudder and resettle.",
   me: "Here I am. We’re all here because of the bacteria, collectively called decay, that I left on the grooves of my teeth for too long, and they took this opportunity to live and eat and keep living, so I asked for an appointment.",
-  decay: "Signs and symptoms of tooth decay include pain, spots on teeth, bad breath that is resistant to brushing and mouthwash, and sometimes there are no symptoms at all. The dentist has to take a very close look.",
+  drill: "The doctor and the nurse are drilling, drilling with such direction and precision, because the cavity grows if left to its own devices.",
+  tooth: "The cavity is a collective object. The cavity is bacterial relations. Its nest is its food. Its burrow, the bite out of my tooth, is a consequence of the way it eats.",
+  food: "It’s my own food, my leftovers, that they make a new meal out of. The consequence is acid. Eventually they would reach the soft core of their chosen tooth, which is called the pulp cavity. At this point I would be touching myself, cavity to cavity.",
   hands: "There are four hands attending to my mouth to prevent this. They are all here, and I open wide.",
   odor: "In the process I am flying everywhere: the odor is coming from inside my mouth. The smell is so warm it becomes like something approaching a burn, but this is not the reason I close my nose to it. The reality is that the smell is my own body pulverized and shooting back at me through the insides of my nostrils, which is more repugnant than the odor itself.",
   plaque: "What I must remember is that the outer surface of my teeth is so many clinging bodies, a sticky layer of bacteria called plaque. That this is continuous with the wet skin of my gums.",
-  home: "On my way home I tongue the uninterrupted surface of my smooth tooth again and again in order to celebrate my victory.",
-  drill: "The doctor and the nurse are drilling, drilling with such direction and precision, because the cavity grows if left to its own devices."
+  cavity: "The cavity is digging into me, and it smells, too. The cavity realizes that I am uncontained. It takes something preexisting on my hard surfaces and makes them vulnerable. The inhabitants of the cavity are invaders even as we live together. We are living together, so together.",
+  filling: "The dentist will affix resin and glass, or just resin, or metal, to the groove they will carve into the enamel. Decay can form underneath the filling, too. The grooves of the back teeth collect food. Tooth location is a risk factor.",
+  decay: "Signs and symptoms of tooth decay include pain, spots on teeth, bad breath that is resistant to brushing and mouthwash, and sometimes there are no symptoms at all. The dentist has to take a very close look.",
+  home: "On my way home I tongue the uninterrupted surface of my smooth tooth again and again in order to celebrate my victory."
 };
 
 // Function for second canvas
 function sketch2(p) {
+  let scaleFactor = 1;
+    if (window.innerWidth < 500) {
+      scaleFactor = 0.75;
+    }
+
   p.setup = function () {
     p.createCanvas(window.innerWidth, window.innerHeight, canvas2);
 
-    let vars = ['toupee', 'glue', 'teacup', 'my_tiny_mouth', 'spit', 'drill', 'my_mouth', 'my_original_tongue', 
-                'tooth', 'filling', 'drone', 'rubber', 'the_tools', 'food', 'me', 'decay', 
-                'nurse', 'cavity', 'odor', 'enamel', 'home', 'hands', 'plaque', 'doctor', 'suction_hose'];
+    let vars = ['my_mouth', 'rubber', 'my_original_tongue', 'the_tools', 'enamel', 'nurse', 'toupee', 'glue', 'my_tiny_mouth', 'teacup', 'spit', 'suction_hose', 'doctor', 'me', 'drill', 'tooth', 'food', 'hands', 'odor', 'plaque', 'cavity', 'filling', 'decay', 'home'];
 
     for (let i = 0; i < vars.length; i++) {
       let displayName = vars[i].replace(/_/g, ' ');
       let element = p.createDiv(displayName);
 
-      let randomX = p.random(20, window.innerWidth - 183);  
-      let randomY = p.random(25, window.innerHeight - 25);
+      // Random position with scale factor
+      let randomX = p.random(20 * scaleFactor, window.innerWidth - (183 * scaleFactor));  
+      let randomY = p.random(25 * scaleFactor, window.innerHeight - (25* scaleFactor));
 
       element.position(randomX, randomY);
       let textWidthValue = p.textWidth(displayName);
 
-      // Width will be based on the text length, and a fixed height of 20px
-      element.size(textWidthValue + 37, 21);
+      // Size based on text width and scale factor
+      element.size((textWidthValue + 37) * scaleFactor, 21 * scaleFactor);
       element.style('background', 'black');
-      element.style('padding-left', '10px');
-      element.style('font-size', '13px');
+      element.style('padding-left', `${10 * scaleFactor}px`);
+      element.style('font-size', `${13 * scaleFactor}px`);
       element.style('-webkit-touch-callout', 'none');
       element.style('-webkit-user-select', 'none');
       element.style('-khtml-user-select', 'none');
@@ -245,20 +245,20 @@ function sketch2(p) {
         let infoBox = p.createDiv();
         let pos = sourceElement.position();
 
-        infoBox.position(pos.x + sourceElement.width + 25, pos.y);
+        infoBox.position(pos.x + sourceElement.width + 15 * scaleFactor, pos.y);
 
         infoBox.style('background', 'white');
         infoBox.style('border', '1px solid black');
-        infoBox.style('padding', '10px');
-        infoBox.style('width', '200px');
-        infoBox.style('box-shadow', '2px 2px 5px rgba(0,0,0,0.2)');
+        infoBox.style('padding', `${10 * scaleFactor}px`);
+        infoBox.style('width', `${200 * scaleFactor}px`);
+        infoBox.style('box-shadow', `${2 * scaleFactor}px ${2 * scaleFactor}px ${5 * scaleFactor}px rgba(0,0,0,0.2)`);
         infoBox.style('-webkit-touch-callout', 'none');
         infoBox.style('-webkit-user-select', 'none');
         infoBox.style('-khtml-user-select', 'none');
         infoBox.style('-moz-user-select', 'none');
         infoBox.style('-ms-user-select', 'none');
         infoBox.style('user-select', 'none');
-        infoBox.style('font-size', '13px');
+        infoBox.style('font-size', `${13 * scaleFactor}px`);
         infoBox.draggable();
 
         let closeBtn = p.createButton('×');
@@ -266,7 +266,7 @@ function sketch2(p) {
         closeBtn.style('float', 'right');
         closeBtn.style('border', 'none');
         closeBtn.style('background', 'none');
-        closeBtn.style('font-size', '20px');
+        closeBtn.style('font-size', `${20 * scaleFactor}px`);
         closeBtn.style('cursor', 'pointer');
         closeBtn.style('color', 'black');
         closeBtn.style('margin', '0px');
@@ -281,7 +281,7 @@ function sketch2(p) {
         let content = elementTexts[elementName];
         let contentDiv = p.createDiv(content);
         contentDiv.parent(infoBox);
-        contentDiv.style('margin-top', '20px');
+        contentDiv.style('margin-top', `${20 * scaleFactor}px`);
 
         infoBoxes[elementName] = infoBox;
       }
@@ -322,7 +322,7 @@ function sketch2(p) {
       let angle = p.atan2(y2 - y1, x2 - x1);
 
       // Set pixel size
-      let pixelSize = 5;
+      let pixelSize = 5 * scaleFactor;
 
       // Draw "pixelated" line using rectangles
       for (let i = 0; i < distance; i += pixelSize) {
@@ -337,6 +337,7 @@ function sketch2(p) {
     }
   }
 }
+
   
 // Run second p5 instance
 function handleFirstClick() {
