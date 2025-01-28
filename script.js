@@ -223,7 +223,7 @@ function sketch2(p) {
       let textWidthValue = p.textWidth(displayName);
 
       // Size based on text width and scale factor
-      element.size(textWidthValue + (20* scaleFactor), 21 * scaleFactor);
+      element.size(textWidthValue + (35* scaleFactor), 21 * scaleFactor);
       element.style('background', 'black');
       element.style('padding-left', `${10 * scaleFactor}px`);
       element.style('font-size', `${13 * scaleFactor}px`);
