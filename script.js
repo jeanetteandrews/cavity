@@ -42,9 +42,8 @@ function sketch1(p) {
   p.setup = function () {
     p.createCanvas(window.innerWidth, window.innerHeight, canvas1);
 
-    // Scale font size based on actual window width, ensure a reasonable minimum and maximum size
-    let fontSize = window.innerWidth * 0.2; // Font size is 20% of the actual window width
-    fontSize = p.constrain(fontSize, 50, 200); // Constrain the font size to a range
+    let fontSize = window.innerWidth * 0.2; 
+    fontSize = p.constrain(fontSize, 100, 220);
     let textWidth = font.textBounds(letters.join(""), 0, 0, fontSize).w;
     
     let xOffset = window.innerWidth / 2 - textWidth / 2;
@@ -93,8 +92,8 @@ function sketch1(p) {
   p.draw = function () {
     p.clear();
 
-    const bounds1 = window.innerWidth * 2/8;
-    const bounds2 = window.innerWidth * 6/8;
+    const bounds1 = window.innerWidth * 3/8;
+    const bounds2 = window.innerWidth * 5/8;
     const bounds3 = window.innerHeight * 3/8;
     const bounds4 = window.innerHeight * 5/8;
 
@@ -137,7 +136,7 @@ function sketch1(p) {
 new p5(sketch1);
 
 let elements = {};
-let infoBoxes = {}; 
+let textBoxes = {}; 
 
 let connections = [
   ['my_mouth', 'me'],
@@ -242,35 +241,35 @@ function sketch2(p) {
       element.draggable();
 
       zindex = 1;
-      function createInfoBox(elementName, sourceElement) {
-        if (infoBoxes[elementName]) {
-          infoBoxes[elementName].remove();
-          delete infoBoxes[elementName];
+      function createTextBox(elementName, sourceElement) {
+        if (textBoxes[elementName]) {
+          textBoxes[elementName].remove();
+          delete textBoxes[elementName];
         }
 
-        let infoBox = p.createDiv();
+        let textBox = p.createDiv();
         let pos = sourceElement.position();
 
-        infoBox.position(pos.x + sourceElement.width + 15 * scaleFactor, pos.y);
+        textBox.position(pos.x + sourceElement.width + 15 * scaleFactor, pos.y);
 
-        infoBox.style('background', 'white');
-        infoBox.style('border', '1px solid black');
-        infoBox.style('padding', `${10 * scaleFactor}px`);
-        infoBox.style('width', `${200 * scaleFactor}px`);
-        infoBox.style('box-shadow', `${2 * scaleFactor}px ${2 * scaleFactor}px ${5 * scaleFactor}px rgba(0,0,0,0.2)`);
-        infoBox.style('-webkit-touch-callout', 'none');
-        infoBox.style('-webkit-user-select', 'none');
-        infoBox.style('-khtml-user-select', 'none');
-        infoBox.style('-moz-user-select', 'none');
-        infoBox.style('-ms-user-select', 'none');
-        infoBox.style('user-select', 'none');
-        infoBox.style('font-size', `${13 * scaleFactor}px`);
-        infoBox.style('z-index', zindex);
-        infoBox.draggable();
+        textBox.style('background', 'white');
+        textBox.style('border', '1px solid black');
+        textBox.style('padding', `${10 * scaleFactor}px`);
+        textBox.style('width', `${200 * scaleFactor}px`);
+        textBox.style('box-shadow', `${2 * scaleFactor}px ${2 * scaleFactor}px ${5 * scaleFactor}px rgba(0,0,0,0.2)`);
+        textBox.style('-webkit-touch-callout', 'none');
+        textBox.style('-webkit-user-select', 'none');
+        textBox.style('-khtml-user-select', 'none');
+        textBox.style('-moz-user-select', 'none');
+        textBox.style('-ms-user-select', 'none');
+        textBox.style('user-select', 'none');
+        textBox.style('font-size', `${13 * scaleFactor}px`);
+        textBox.style('z-index', zindex);
+        textBox.draggable();
         zindex++;
 
         let closeBtn = p.createButton('×');
-        closeBtn.parent(infoBox);
+        closeBtn.parent(textBox);
         closeBtn.style('float', 'right');
         closeBtn.style('border', 'none');
         closeBtn.style('background', 'none');
@@ -282,33 +281,33 @@ function sketch2(p) {
         closeBtn.style('line-height', '1');
         closeBtn.style('font-family', 'Arial');
         closeBtn.mousePressed(function () {
-          infoBox.remove();
-          delete infoBoxes[elementName];
+          textBox.remove();
+          delete textBoxes[elementName];
         });
 
         let content = elementTexts[elementName];
         let contentDiv = p.createDiv(content);
-        contentDiv.parent(infoBox);
+        contentDiv.parent(textBox);
         contentDiv.style('margin-top', `${20 * scaleFactor}px`);
 
-        infoBoxes[elementName] = infoBox;
+        textBoxes[elementName] = textBox;
 
-        infoBox.mousePressed(function () {
-          infoBox.style('z-index', zindex);
+        textBox.mousePressed(function () {
+          textBox.style('z-index', zindex);
           zindex++;
         });
       }
 
       element.mouseClicked(function () {
-        createInfoBox(vars[i], element);
-        element.style('color', '#32DE00');
+        createTextBox(vars[i], element);
+        element.style('color', '#39FF00');
       });
 
       element.elt.addEventListener('drag', function (event) {
-        let infoBox = infoBoxes[vars[i]];
-        if (infoBox) {
+        let textBox = textBoxes[vars[i]];
+        if (textBox) {
           let newPos = element.position();
-          infoBox.position(newPos.x + element.width() + 25, newPos.y);
+          textBox.position(newPos.x + element.width() + 25, newPos.y);
         }
       });
 
@@ -344,17 +343,15 @@ function sketch2(p) {
 
         // Draw a small square
         p.noStroke();
-        p.fill(0); // Set the color of the "pixels"
+        p.fill(0);
         p.rect(px, py, pixelSize, pixelSize / 2);
       }
     }
   }
 }
 
-  
 // Run second p5 instance
 function handleFirstClick() {
-  // const div1 = document.getElementById("div1");
   const infoContainer = document.getElementById("info-container");
   
   // Hide the first canvas and display the second
@@ -384,7 +381,6 @@ closeBtn.addEventListener('click', function() {
 });
 
 window.onload = function() {
-  // Get the initial window width
   const initialWidth = window.innerWidth;
   const initialHeight = window.innerHeight;
   
