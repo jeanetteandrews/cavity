@@ -220,16 +220,14 @@ function sketch2(p) {
 
     for (let i = 0; i < vars.length; i++) {
       let displayName = vars[i].replace(/_/g, ' ');
+      let textWidthValue = p.textWidth(displayName);
       let element = p.createDiv(displayName);
 
-      // Random position with scale factor
-      let randomX = p.random(20 * scaleFactor, window.innerWidth - (183 * scaleFactor));  
-      let randomY = p.random(25 * scaleFactor, window.innerHeight - (25* scaleFactor));
+      let randomX = p.random(20 * scaleFactor, window.innerWidth - (textWidthValue + (65* scaleFactor) * scaleFactor));  
+      let randomY = p.random(5 * scaleFactor, window.innerHeight - (25* scaleFactor));
 
       element.position(randomX, randomY);
-      let textWidthValue = p.textWidth(displayName);
 
-      // Size based on text width and scale factor
       element.size(textWidthValue + (37* scaleFactor), 21 * scaleFactor);
       element.style('background', 'black');
       element.style('padding-left', `${10 * scaleFactor}px`);
@@ -243,6 +241,7 @@ function sketch2(p) {
       element.style('white-space', 'nowrap');
       element.draggable();
 
+      zindex = 1;
       function createInfoBox(elementName, sourceElement) {
         if (infoBoxes[elementName]) {
           infoBoxes[elementName].remove();
@@ -266,7 +265,9 @@ function sketch2(p) {
         infoBox.style('-ms-user-select', 'none');
         infoBox.style('user-select', 'none');
         infoBox.style('font-size', `${13 * scaleFactor}px`);
+        infoBox.style('z-index', zindex);
         infoBox.draggable();
+        zindex++;
 
         let closeBtn = p.createButton('×');
         closeBtn.parent(infoBox);
@@ -291,11 +292,16 @@ function sketch2(p) {
         contentDiv.style('margin-top', `${20 * scaleFactor}px`);
 
         infoBoxes[elementName] = infoBox;
+
+        infoBox.mousePressed(function () {
+          infoBox.style('z-index', zindex);
+          zindex++;
+        });
       }
 
       element.mouseClicked(function () {
         createInfoBox(vars[i], element);
-        element.style('color', 'green');
+        element.style('color', '#32DE00');
       });
 
       element.elt.addEventListener('drag', function (event) {
